@@ -2,7 +2,6 @@ import turtle as turtle
 import math
 import ru_local as ru
 
-n = int(input())
 
 def get_num_hexagons():
     while True:
@@ -15,6 +14,7 @@ def get_num_hexagons():
         except ValueError:
             print("Попробуйте снова")
     return num_hex
+
 
 def get_color_choice():
     choices = {"1": "Red", "2": "Orange", "3": "Yellow", "4": "Green", "5": "Purple", "6": "Blue", "7": "Black",
@@ -32,7 +32,6 @@ def get_color_choice():
     print("9 - Коричневый")
     print("10 - Розовый")
 
-
     while True:
         choice = input("Введите цвет (число от 1 до 10): ")
         if choice in choices:
@@ -40,8 +39,6 @@ def get_color_choice():
         else:
             print("Попробуйте еще раз")
 
-num_hex = get_num_hexagons()
-color = get_color_choice()
 
 def draw_hexagon(x, y, side_len, color):
     turtle.up()
@@ -62,6 +59,10 @@ def draw_hexagon(x, y, side_len, color):
 
 
 if __name__ == '__main__':
+    n = get_num_hexagons()
+    clr_1 = get_color_choice()
+    clr_2 = get_color_choice()
+
     x_cr, y_cr = -250, 250
     r = 500 / (n + 0.5) / 2
     side = r * 2 / (3 ** 0.5)
@@ -70,18 +71,18 @@ if __name__ == '__main__':
 
     for m in range(cnt_column):
         if m % 4 < 2:
-            clr = 'Lime'
+            clr = clr_1
         else:
-            clr = 'Yellow'
+            clr = clr_2
 
         for k in range(n):
             if k == 0 and m % 2 == 0:
                 x_cr += side
             draw_hexagon(x_cr, y_cr, side, clr)
-            if clr == 'Lime':
-                clr = 'Yellow'
+            if clr == clr_1:
+                clr = clr_2
             else:
-                clr = 'Lime'
+                clr = clr_1
 
             x_cr += r * 2
         x_cr = -250
