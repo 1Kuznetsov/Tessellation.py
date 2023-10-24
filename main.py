@@ -6,38 +6,36 @@ import ru_local as ru
 def get_num_hexagons():
     while True:
         try:
-            num_hex = int(input("Введите число от 4 до 20: "))
+            num_hex = int(input(ru.QUEST_1))
             if num_hex < 4 or num_hex > 20:
-                print("Введите другое число")
+                print(ru.ANOTHER_NUMB)
             else:
                 break
         except ValueError:
-            print("Попробуйте снова")
+            print(ru.TRY_AGAIN)
     return num_hex
 
 
 def get_color_choice():
-    choices = {"1": "Red", "2": "Orange", "3": "Yellow", "4": "Green", "5": "Purple", "6": "Blue", "7": "Black",
-               "8": "Grey", "9": "Brown", "10": "Pink"}
+    choices = {1: 'Red', 2: 'Blue', 3: 'Green', 4: 'Yellow',
+               5: 'Orange', 6: 'Purple', 7: 'Pink'}
 
-    print("Выберите цвет заливки шестиугольника: ")
-    print("1 - Красный")
-    print("2 - Оранжевый")
-    print("3 - Желтый")
-    print("4 - Зеленый")
-    print("5 - Фиолетовый")
-    print("6 - Голубой")
-    print("7 - Черный")
-    print("8 - Серый")
-    print("9 - Коричневый")
-    print("10 - Розовый")
+    print(ru.QUEST_2)
+
+    print(ru.COLOR_1)
+    print(ru.COLOR_2)
+    print(ru.COLOR_3)
+    print(ru.COLOR_4)
+    print(ru.COLOR_5)
+    print(ru.COLOR_6)
+    print(ru.COLOR_7)
 
     while True:
-        choice = input("Введите цвет (число от 1 до 10): ")
+        choice = input(ru.CHOOSE_COLOR)
         if choice in choices:
             return choices[choice]
         else:
-            print("Попробуйте еще раз")
+            print(ru.TRY_AGAIN)
 
 
 def draw_hexagon(x, y, side_len, color):
