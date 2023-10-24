@@ -46,7 +46,6 @@ def draw_hexagon(x, y, side_len, color):
     turtle.begin_fill()
     turtle.pd()
     turtle.speed(0)
-    turtle.pensize(1)
     turtle.color('Black', color)
     turtle.rt(30)
     for i in range(6):
@@ -77,7 +76,7 @@ if __name__ == '__main__':
 
         for k in range(n):
             if k == 0 and m % 2 == 0:
-                x_cr += side
+                x_cr += 2 *r
             draw_hexagon(x_cr, y_cr, side, clr)
             if clr == clr_1:
                 clr = clr_2
@@ -85,5 +84,5 @@ if __name__ == '__main__':
                 clr = clr_1
 
             x_cr += r * 2
-        x_cr = -250
+        x_cr = -250 + r
         y_cr -= 1.5 * side
