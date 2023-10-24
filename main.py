@@ -1,35 +1,50 @@
-import turtle as t
+import turtle as turtle
 import math
 import ru_local as ru
 
 n = int(input())
-side = 0
-
-for j in range(500, 100**100):
-    print(j % int(n+0.5))
-    if j % (n + 0.5) == 0:
-        side = j / (n + 0.5)
-        break
 
 
 def draw_hexagon(x, y, side_len, color):
-    t.up()
-    t.goto(x, y)
-    t.begin_fill()
-    t.pd()
-    t.color('black', color)
-    t.rt(30)
+    turtle.up()
+    turtle.goto(x, y)
+    turtle.begin_fill()
+    turtle.pd()
+    turtle.speed(0)
+    turtle.pensize(1)
+    turtle.color('Black', color)
+    turtle.rt(30)
     for i in range(6):
-        t.fd(side_len)
+        turtle.fd(side_len)
         if i == 5:
-            t.rt(30)
+            turtle.rt(30)
         else:
-            t.rt(60)
-    t.end_fill()
-    t.exitonclick()
+            turtle.rt(60)
+    turtle.end_fill()
 
 
-draw_hexagon(0, 0, side, 'green')
+if __name__ == '__main__':
+    x_cr, y_cr = -250, 250
+    r = 500 / (n + 0.5) / 2
+    side = r * 2 / (3 ** 0.5)
+    cnt_column = 500 / (1.5 * side)
+    cnt_column = int(cnt_column)
 
-side = int(side)
-print(n, side, j)
+    for m in range(cnt_column):
+        if m % 4 < 2:
+            clr = 'Lime'
+        else:
+            clr = 'Yellow'
+
+        for k in range(n):
+            if k == 0 and m % 2 == 0:
+                x_cr += side
+            draw_hexagon(x_cr, y_cr, side, clr)
+            if clr == 'Lime':
+                clr = 'Yellow'
+            else:
+                clr = 'Lime'
+
+            x_cr += r * 2
+        x_cr = -250
+        y_cr -= 1.5 * side
