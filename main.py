@@ -4,6 +4,44 @@ import ru_local as ru
 
 n = int(input())
 
+def get_num_hexagons():
+    while True:
+        try:
+            num_hex = int(input("Введите число от 4 до 20: "))
+            if num_hex < 4 or num_hex > 20:
+                print("Введите другое число")
+            else:
+                break
+        except ValueError:
+            print("Попробуйте снова")
+    return num_hex
+
+def get_color_choice():
+    choices = {"1": "Red", "2": "Orange", "3": "Yellow", "4": "Green", "5": "Purple", "6": "Blue", "7": "Black",
+               "8": "Grey", "9": "Brown", "10": "Pink"}
+
+    print("Выберите цвет заливки шестиугольника: ")
+    print("1 - Красный")
+    print("2 - Оранжевый")
+    print("3 - Желтый")
+    print("4 - Зеленый")
+    print("5 - Фиолетовый")
+    print("6 - Голубой")
+    print("7 - Черный")
+    print("8 - Серый")
+    print("9 - Коричневый")
+    print("10 - Розовый")
+
+
+    while True:
+        choice = input("Введите цвет (число от 1 до 10): ")
+        if choice in choices:
+            return choices[choice]
+        else:
+            print("Попробуйте еще раз")
+
+num_hex = get_num_hexagons()
+color = get_color_choice()
 
 def draw_hexagon(x, y, side_len, color):
     turtle.up()
