@@ -67,8 +67,7 @@ if __name__ == '__main__':
     x_cr, y_cr = -250, 250
     r = 500 / (n + 0.5) / 2
     side = r * 2 / (3 ** 0.5)
-    cnt_column = 500 / (1.5 * side)
-    cnt_column = int(cnt_column)
+    cnt_column = n
 
     for m in range(cnt_column):
         if m % 4 < 2:
