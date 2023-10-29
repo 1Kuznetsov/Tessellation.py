@@ -1,3 +1,5 @@
+# Kuznetsov Igor - 60 %, Yadreeva Maria - 40 %.
+
 import turtle as turtle
 import ru_local as ru
 
@@ -26,6 +28,7 @@ def get_num_hexagons():
                 num_hex = int(input(ru.TRY_AGAIN))
             else:
                 return num_hex
+
         except ValueError:
             print(ru.REQ_COUNT)
             num_hex = int(input(ru.TRY_AGAIN))
@@ -42,6 +45,7 @@ def draw_hexagon(x, y, side_len, color):
 
     for i in range(6):
         turtle.fd(side_len)
+
         if i == 5:
             turtle.rt(30)
         else:
@@ -85,6 +89,7 @@ if __name__ == '__main__':
                 clr = clr_2
 
             x_cr += r * 2
+
         x_cr = -250
         y_cr -= 1.5 * side
 
