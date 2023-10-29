@@ -2,40 +2,33 @@ import turtle as turtle
 import ru_local as ru
 
 
-def get_num_hexagons():
-    while True:
-        try:
-            num_hex = int(input(ru.QUEST_1))
-            if num_hex < 4 or num_hex > 20:
-                print(ru.ANOTHER_NUMB)
-            else:
-                break
-        except ValueError:
-            print(ru.TRY_AGAIN)
-    return num_hex
-
-
 def get_color_choice():
-    choices = {'1': 'Red', '2': 'Blue', '3': 'Green', '4': 'Yellow',
-               '5': 'Orange', '6': 'Purple', '7': 'Pink'}
+    choices = {ru.COLOR_1: 'Red', ru.COLOR_2: 'Blue', ru.COLOR_3: 'Lime', ru.COLOR_4: 'Yellow',
+               ru.COLOR_5: 'Orange', ru.COLOR_6: 'Purple', ru.COLOR_7: 'Pink'}
 
-    print(ru.QUEST_2)
-
-    print(ru.COLOR_1)
-    print(ru.COLOR_2)
-    print(ru.COLOR_3)
-    print(ru.COLOR_4)
-    print(ru.COLOR_5)
-    print(ru.COLOR_6)
-    print(ru.COLOR_7)
+    choice = input(ru.CHOOSE_COLOR).lower()
 
     while True:
-        choice = input(ru.CHOOSE_COLOR)
-
         if choice in choices:
             return choices[choice]
         else:
-            print(ru.TRY_AGAIN)
+            print('\'{}\' {}'.format(choice, ru.INCORRECT_CLR))
+            choice = input(ru.TRY_AGAIN).lower()
+
+
+def get_num_hexagons():
+    num_hex = int(input(ru.COUNT))
+
+    while True:
+        try:
+            if num_hex < 4 or num_hex > 20:
+                print(ru.REQ_COUNT)
+                num_hex = int(input(ru.TRY_AGAIN))
+            else:
+                return num_hex
+        except ValueError:
+            print(ru.REQ_COUNT)
+            num_hex = int(input(ru.TRY_AGAIN))
 
 
 def draw_hexagon(x, y, side_len, color):
@@ -58,9 +51,12 @@ def draw_hexagon(x, y, side_len, color):
 
 
 if __name__ == '__main__':
-    n = get_num_hexagons()
+    print(ru.COLORS_ALLOWED)
+    print(ru.COLOR_1, ru.COLOR_2, ru.COLOR_3, ru.COLOR_4, ru.COLOR_5, ru.COLOR_6, ru.COLOR_7, sep='\n')
+
     clr_1 = get_color_choice()
     clr_2 = get_color_choice()
+    n = get_num_hexagons()
 
     turtle.hideturtle()
 
@@ -71,9 +67,9 @@ if __name__ == '__main__':
 
     for m in range(cnt_column):
         if m % 4 < 2:
-            clr = clr_1
-        else:
             clr = clr_2
+        else:
+            clr = clr_1
 
         if m % 2 == 0:
             x_cr += 2 * r
@@ -83,10 +79,10 @@ if __name__ == '__main__':
         for k in range(n):
             draw_hexagon(x_cr, y_cr, side, clr)
 
-            if clr == clr_1:
-                clr = clr_2
-            else:
+            if clr == clr_2:
                 clr = clr_1
+            else:
+                clr = clr_2
 
             x_cr += r * 2
         x_cr = -250
