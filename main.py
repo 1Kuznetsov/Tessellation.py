@@ -1,4 +1,4 @@
-# Kuznetsov Igor - 60 %, Yadreeva Maria - 40 %.
+# Kuznetsov Igor - 100 , Yadreeva Maria - 68.
 
 import turtle as turtle
 import ru_local as ru
